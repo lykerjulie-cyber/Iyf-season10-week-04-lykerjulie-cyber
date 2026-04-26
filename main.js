@@ -1,45 +1,58 @@
-// Variable declarations practice
-let name = "Your Name"; 
+// Helper: prints to both page AND console
+function logToPage(message) {
+    const outputDiv = document.getElementById('output');
+    outputDiv.innerHTML += message + '<br>';
+    console.log(message); // still works on desktop
+}
+
+// Clear any old output first
+document.getElementById('output').innerHTML = '';
+
+logToPage("=== JS Practice Output ===");
+
+// Variable declarations from the task
+let name = "Your Name";
 let age = 25;
 const birthYear = 1999;
 
-// typeof operator
-console.log(typeof name);    // string
-console.log(typeof age);     // number
-console.log(typeof true);    // boolean
+logToPage("typeof name: " + typeof name);    // string
+logToPage("typeof age: " + typeof age);      // number
+logToPage("typeof true: " + typeof true);    // boolean
 
 // let vs const
 let score = 100;
 score = 150;  // Works!
-console.log("Updated score:", score);
+logToPage("Updated score: " + score);
 
 const PI = 3.14159;
-// PI = 3;  // Error! const cannot be reassigned - uncomment to test
-console.log("PI value:", PI);
-// Exercise: Variable Practice
-console.log("--- Variable Practice Exercise ---");
+// PI = 3;  // Error! const cannot be reassigned
+logToPage("PI value: " + PI);
 
-// 1. Your name (string)
-let myName = "Alex Kim"; 
-console.log("My name is:", myName);
-console.log("Type of myName:", typeof myName);
+logToPage("<br>=== Variable Practice Exercise ===");
 
-// 2. Your age (number) 
-let myAge = 22;
-console.log("My age is:", myAge);
-console.log("Type of myAge:", typeof myAge);
+// 1. Your name (string) - CHANGE THIS
+let myName = "Jordan"; 
+logToPage("My name is: " + myName);
+logToPage("Type of myName: " + typeof myName);
 
-// 3. Whether you're a student (boolean)
+// 2. Your age (number) - CHANGE THIS
+let myAge = 20;
+logToPage("I am " + myAge + " years old");
+logToPage("Type of myAge: " + typeof myAge);
+
+// 3. Whether you're a student (boolean) - CHANGE THIS
 let isStudent = true;
-console.log("Am I a student?", isStudent);
-console.log("Type of isStudent:", typeof isStudent);
+logToPage("Student status: " + isStudent);
+logToPage("Type of isStudent: " + typeof isStudent);
 
-// 4. Your favorite colors (array - preview for next lesson)
-let favoriteColors = ["blue", "black", "forest green"];
-console.log("My favorite colors are:", favoriteColors);
-console.log("Type of favoriteColors:", typeof favoriteColors); // Note: arrays are type "object"
+// 4. Your favorite colors (array) - CHANGE THIS
+let favoriteColors = ["purple", "teal", "orange"];
+logToPage("My favorite colors: " + favoriteColors.join(", "));
+logToPage("Type of favoriteColors: " + typeof favoriteColors);
 
-// 5. Today's date (use new Date())
-const todaysDate = new Date();
-console.log("Today's date is:", todaysDate);
-console.log("Type of todaysDate:", typeof todaysDate); // Also "object"
+// 5. Today's date
+const today = new Date();
+logToPage("Today is: " + today.toDateString());
+logToPage("Type of today: " + typeof today);
+
+logToPage("<br>=== Done! ===");
