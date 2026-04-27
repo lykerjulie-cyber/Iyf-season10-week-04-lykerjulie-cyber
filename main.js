@@ -56,5 +56,4 @@ logToPage("Today is: " + today.toDateString());
 logToPage("Type of today: " + typeof today);
 
 logToPage("<br>=== Done! ===");
-Task 7.1
-Js.setup and variables practice
+
