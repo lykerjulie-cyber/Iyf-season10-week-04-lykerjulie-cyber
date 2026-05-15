@@ -1,59 +1,120 @@
-// Helper: prints to both page AND console
-function logToPage(message) {
-    const outputDiv = document.getElementById('output');
-    outputDiv.innerHTML += message + '<br>';
-    console.log(message); // still works on desktop
+
+console.log("=== IYF Week 4 - Juliet Adhiambo's JS Practice ===");
+
+// Task 7.1: Variable Practice
+let myName = "Juliet Adhiambo";
+let firstName = "Juliet";
+let age = 32;
+const isStudent = true;
+let favoriteColors = ["violet", "green", "juliet", "emerald"];
+let todaysDate = new Date();
+
+console.log(`My name is: ${myName}`);
+console.log(`I am ${age} years old`);
+console.log(`Am I a student? ${isStudent}`);
+console.log(`Favorite colors: ${favoriteColors.join(', ')}`);
+console.log(`Today is: ${todaysDate.toDateString()}`);
+
+// Task 7.2: Data Types & Operators Challenge
+console.log("\n=== Age Calculations for Juliet ===");
+const DAYS_IN_YEAR = 365.25;
+const HOURS_IN_DAY = 24;
+
+let ageInDays = Math.floor(age * DAYS_IN_YEAR);
+let ageInHours = ageInDays * HOURS_IN_DAY;
+let yearTurn100 = new Date().getFullYear() + (100 - age);
+
+console.log(`Your age in days: ~${ageInDays} days`);
+console.log(`Your age in hours: ~${ageInHours} hours`);
+console.log(`You'll turn 100 in the year: ${yearTurn100}`);
+
+// String operations with your name
+let fullName = firstName + " Adhiambo";
+let greeting = `Hello, ${firstName}! You love ${favoriteColors[0]} and ${favoriteColors[1]}.`;
+console.log(greeting);
+console.log(`Your name has ${firstName.length} characters.`);
+console.log(fullName.toUpperCase());
+console.log(fullName.includes("Juliet"));
+
+// Task 7.3: Functions
+console.log("\n=== Functions ===");
+
+const calculateArea = (width, height) => width * height;
+const celsiusToFahrenheit = (celsius) => (celsius * 9/5) + 32;
+const isEven = (number) => number % 2 === 0;
+
+const getInitials = (fullName) => {
+    return fullName.split(' ').map(word => word.charAt(0).toUpperCase()).join('');
+};
+
+const reverseString = (str) => str.split('').reverse().join('');
+
+const calculateTip = (bill, tipPercent = 15) => {
+    return bill * (tipPercent / 100);
+};
+
+function greet(name = "Guest", greeting = "Hello") {
+    return `${greeting}, ${name}!`;
 }
 
-// Clear any old output first
-document.getElementById('output').innerHTML = '';
+console.log(`Area 5x10: ${calculateArea(5, 10)}`);
+console.log(`25°C to F: ${celsiusToFahrenheit(25)}°F`);
+console.log(`Is 32 even? ${isEven(age)}`);
+console.log(`Initials: ${getInitials(myName)}`);
+console.log(`Reverse "Juliet": ${reverseString(firstName)}`);
+console.log(greet(firstName, "Karibu"));
+console.log(`Tip on $50: $${calculateTip(50)}`);
 
-logToPage("=== JS Practice Output ===");
+// Task 7.4: Control Flow
+console.log("\n=== FizzBuzz 1-15 ===");
+for (let i = 1; i <= 15; i++) {
+    if (i % 3 === 0 && i % 5 === 0) console.log("FizzBuzz");
+    else if (i % 3 === 0) console.log("Fizz");
+    else if (i % 5 === 0) console.log("Buzz");
+    else console.log(i);
+}
 
-// Variable declarations from the task
-let name = "Your Name";
-let age = 25;
-const birthYear = 1999;
+// Print even numbers 1-50
+console.log("\nEven numbers 1-50:");
+for (let i = 2; i <= 50; i += 2) {
+    console.log(i);
+}
 
-logToPage("typeof name: " + typeof name);    // string
-logToPage("typeof age: " + typeof age);      // number
-logToPage("typeof true: " + typeof true);    // boolean
+// Triangle of stars
+let triangle = "\nTriangle:\n";
+for (let i = 1; i <= 5; i++) {
+    triangle += "*".repeat(i) + "\n";
+}
+console.log(triangle);
 
-// let vs const
-let score = 100;
-score = 150;  // Works!
-logToPage("Updated score: " + score);
+// Mini-Project: Calculator
+function add(a, b) { return a + b; }
+function subtract(a, b) { return a - b; }
+function multiply(a, b) { return a * b; }
+function divide(a, b) {
+    if (b === 0) return "Error: Cannot divide by zero";
+    return a / b;
+}
+function modulus(a, b) { return a % b; }
+function power(a, b) { return a ** b; }
 
-const PI = 3.14159;
-// PI = 3;  // Error! const cannot be reassigned
-logToPage("PI value: " + PI);
+function calculate(num1, operator, num2) {
+    switch (operator) {
+        case "+": return add(num1, num2);
+        case "-": return subtract(num1, num2);
+        case "*": return multiply(num1, num2);
+        case "/": return divide(num1, num2);
+        case "%": return modulus(num1, num2);
+        case "**": return power(num1, num2);
+        default: return "Invalid operator";
+    }
+}
 
-logToPage("<br>=== Variable Practice Exercise ===");
-
-// 1. Your name (string) - CHANGE THIS
-let myName = "Jordan"; 
-logToPage("My name is: " + myName);
-logToPage("Type of myName: " + typeof myName);
-
-// 2. Your age (number) - CHANGE THIS
-let myAge = 20;
-logToPage("I am " + myAge + " years old");
-logToPage("Type of myAge: " + typeof myAge);
-
-// 3. Whether you're a student (boolean) - CHANGE THIS
-let isStudent = true;
-logToPage("Student status: " + isStudent);
-logToPage("Type of isStudent: " + typeof isStudent);
-
-// 4. Your favorite colors (array) - CHANGE THIS
-let favoriteColors = ["purple", "teal", "orange"];
-logToPage("My favorite colors: " + favoriteColors.join(", "));
-logToPage("Type of favoriteColors: " + typeof favoriteColors);
-
-// 5. Today's date
-const today = new Date();
-logToPage("Today is: " + today.toDateString());
-logToPage("Type of today: " + typeof today);
-
-logToPage("<br>=== Done! ===");
-
+console.log("\n=== Calculator Tests ===");
+console.log(`32 + 10 = ${calculate(32, "+", 10)}`);
+console.log(`32 - 10 = ${calculate(32, "-", 10)}`);
+console.log(`32 * 2 = ${calculate(32, "*", 2)}`);
+console.log(`32 / 4 = ${calculate(32, "/", 4)}`);
+console.log(`32 / 0 = ${calculate(32, "/", 0)}`);
+console.log(`10 % 3 = ${calculate(10, "%", 3)}`);
+console.log(`2 ** 5 = ${calculate(2, "**", 5)}`);
